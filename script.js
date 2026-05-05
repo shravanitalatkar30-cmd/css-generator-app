@@ -1,14 +1,25 @@
-// 1. Selecting the elements from HTML
+// 1. Select elements from the DOM
 const slider = document.getElementById('radius-slider');
 const radiusVal = document.getElementById('radius-val');
 const previewBox = document.getElementById('preview-box');
 const cssOutput = document.getElementById('css-code');
 
-// 2. Creating the function that updates the box
-slider.addEventListener('input', () => {
-    const value = slider.value; // Gets the number from slider
+// 2. Function to update UI components
+function updateBorderRadius() {
+    const value = slider.value;
     
-    radiusVal.innerText = value; // Updates the number on screen
-    previewBox.style.borderRadius = `${value}px`; // Changes the box shape
-    cssOutput.value = `border-radius: ${value}px;`; // Shows the code to copy
-});
+    // Update the number text on the screen
+    radiusVal.innerText = value;
+    
+    // Update the visual shape of the box
+    previewBox.style.borderRadius = `${value}px`;
+    
+    // Update the code inside the textarea
+    cssOutput.value = `border-radius: ${value}px;`;
+}
+
+// 3. Listen for slider movement
+slider.addEventListener('input', updateBorderRadius);
+
+// 4. Run once on load to ensure sync
+updateBorderRadius();

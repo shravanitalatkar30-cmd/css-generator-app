@@ -3,26 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Generator - Week 1</title>
+    <title>CSS Code Generator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="main-container">
+    <!-- Header Component -->
+    <header class="app-header">
         <h1>CSS Code Generator</h1>
-        
-        <div class="app-grid">
-            <div class="controls">
-                <label>Border Radius:</label>
-                <input type="range" id="radius-slider" min="0" max="100" value="0">
-                <span id="radius-val">0</span>px
-            </div>
+        <p>Design beautiful layouts effortlessly</p>
+    </header>
 
-            <div class="preview-area">
+    <!-- Main Content Area -->
+    <main class="main-container">
+        <div class="app-grid">
+            
+            <!-- Left Panel: Controls -->
+            <section class="controls-panel">
+                <h2>Controls</h2>
+                <div class="control-group">
+                    <label for="radius-slider">Border Radius: <span id="radius-val">0</span>px</label>
+                    <input type="range" id="radius-slider" min="0" max="100" value="0">
+                </div>
+            </section>
+
+            <!-- Right Panel: Preview -->
+            <section class="preview-panel">
+                <h2>Preview</h2>
                 <div id="preview-box"></div>
-                <textarea id="css-code" readonly>border-radius: 0px;</textarea>
-            </div>
+                <div class="code-output">
+                    <label>CSS Output:</label>
+                    <textarea id="css-code" readonly>border-radius: 0px;</textarea>
+                </div>
+            </section>
+
         </div>
-    </div>
+    </main>
+
+    <!-- Footer Component -->
+    <footer class="app-footer">
+        <p>&copy; 2026 CSS Generator App | Built for DIY Internship</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
