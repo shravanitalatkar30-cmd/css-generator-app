@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Code Generator - Week 3</title>
+    <title>CSS Code Generator - Week 4</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="app-header">
-        <h1>CSS Layout Generator</h1>
-        <p>Select a template and customize the design</p>
+        <h1>CSS Customizer</h1>
+        <p>Fine-tune colors, spacing, and layouts</p>
     </header>
 
     <main class="main-container">
@@ -17,10 +17,10 @@
             
             <!-- Controls Panel -->
             <section class="controls-panel">
-                <h2>Customization</h2>
+                <h2>Customization Tools</h2>
                 
                 <div class="control-group">
-                    <label for="template-select">Layout Template:</label>
+                    <label>Layout Template:</label>
                     <select id="template-select">
                         <option value="card">Single Card</option>
                         <option value="grid">Photo Grid (2x2)</option>
@@ -29,8 +29,20 @@
                 </div>
 
                 <div class="control-group">
-                    <label for="radius-slider">Border Radius: <span id="radius-val">0</span>px</label>
+                    <label>Colors:</label>
+                    <div class="color-pickers">
+                        <span>Background: <input type="color" id="bg-color" value="#ecf0f1"></span>
+                        <span>Items: <input type="color" id="item-color" value="#3498db"></span>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label>Spacing & Size:</label>
+                    <span>Border Radius: <span id="radius-val">0</span>px</span>
                     <input type="range" id="radius-slider" min="0" max="100" value="0">
+                    
+                    <span>Internal Padding: <span id="padding-val">20</span>px</span>
+                    <input type="range" id="padding-slider" min="0" max="50" value="20">
                 </div>
             </section>
 
@@ -38,7 +50,6 @@
             <section class="preview-panel">
                 <h2>Live Preview</h2>
                 <div id="preview-container" class="card-template">
-                    <!-- The items inside change based on the template -->
                     <div class="preview-item">Item 1</div>
                     <div class="preview-item grid-only">Item 2</div>
                     <div class="preview-item grid-only">Item 3</div>
@@ -55,7 +66,7 @@
     </main>
 
     <footer class="app-footer">
-        <p>&copy; 2026 CSS Generator App | Week 3 Milestone</p>
+        <p>&copy; 2026 CSS Generator App | Week 4 Customization Milestone</p>
     </footer>
 
     <script src="script.js"></script>

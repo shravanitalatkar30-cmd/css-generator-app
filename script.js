@@ -1,30 +1,12 @@
-// 1. Select elements from the DOM
-const slider = document.getElementById('radius-slider');
-const radiusVal = document.getElementById('radius-val');
-const previewBox = document.getElementById('preview-box');
-const cssOutput = document.getElementById('css-code');
-
-// 2. Function to update UI components
-function updateBorderRadius() {
-    const value = slider.value;
-    
-    // Update the number text on the screen
-    radiusVal.innerText = value;
-    
-    // Update the visual shape of the box
-    previewBox.style.borderRadius = `${value}px`;
-    
-    // Update the code inside the textarea
-    cssOutput.value = `border-radius: ${value}px;`;
-}
-
-// 3. Listen for slider movement
-slider.addEventListener('input', updateBorderRadius);
-
-// 4. Run once on load to ensure sync
-updateBorderRadius();const templateSelect = document.getElementById('template-select');
+const templateSelect = document.getElementById('template-select');
+const bgColorInput = document.getElementById('bg-color');
+const itemColorInput = document.getElementById('item-color');
 const radiusSlider = document.getElementById('radius-slider');
+const paddingSlider = document.getElementById('padding-slider');
+
 const radiusVal = document.getElementById('radius-val');
+const paddingVal = document.getElementById('padding-val');
+
 const previewContainer = document.getElementById('preview-container');
 const previewItems = document.querySelectorAll('.preview-item');
 const cssOutput = document.getElementById('css-code');
@@ -32,31 +14,49 @@ const cssOutput = document.getElementById('css-code');
 function updateApp() {
     const layout = templateSelect.value;
     const radius = radiusSlider.value;
+    const padding = paddingSlider.value;
+    const bgColor = bgColorInput.value;
+    const itemColor = itemColorInput.value;
 
-    // 1. Update Layout Class
-    previewContainer.className = ''; // Clear old classes
+    // 1. Update Preview Container
+    previewContainer.className = '';
     previewContainer.classList.add(`${layout}-template`);
+    previewContainer.style.backgroundColor = bgColor;
+    previewContainer.style.padding = `${padding}px`;
 
-    // 2. Update Border Radius for all items
+    // 2. Update Items
     previewItems.forEach(item => {
         item.style.borderRadius = `${radius}px`;
+        item.style.backgroundColor = itemColor;
     });
 
-    // 3. Update Text display
+    // 3. Update Text labels
     radiusVal.innerText = radius;
+    paddingVal.innerText = padding;
 
-    // 4. Generate CSS Code Snippet
-    let layoutCSS = "";
-    if(layout === 'card') layoutCSS = "display: block;";
-    if(layout === 'grid') layoutCSS = "display: grid;\ngrid-template-columns: 1fr 1fr;\ngap: 15px;";
-    if(layout === 'columns') layoutCSS = "display: flex;\ngap: 15px;";
-
-    cssOutput.value = `/* Container Styles */\n.container {\n  ${layoutCSS}\n}\n\n/* Item Styles */\n.item {\n  border-radius: ${radius}px;\n  background-color: #3498db;\n}`;
+    // 4. Generate Dynamic CSS
+    const cssText = `/* Container Styles */
+.container {
+  display: ${layout === 'grid' ? 'grid' : layout === 'columns' ? 'flex' : 'block'};
+  ${layout === 'grid' ? 'grid-template-columns: 1fr 1fr;' : ''}
+  gap: 15px;
+  padding: ${padding}px;
+  background-color: ${bgColor};
 }
 
-// Event Listeners
-templateSelect.addEventListener('change', updateApp);
-radiusSlider.addEventListener('input', updateApp);
+/* Item Styles */
+.item {
+  background-color: ${itemColor};
+  border-radius: ${radius}px;
+}`;
 
-// Initialize on load
+    cssOutput.value = cssText;
+}
+
+// Event Listeners for all inputs
+[templateSelect, bgColorInput, itemColorInput, radiusSlider, paddingSlider].forEach(input => {
+    input.addEventListener('input', updateApp);
+});
+
+// Run once to initialize
 updateApp();
