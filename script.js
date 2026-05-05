@@ -1,62 +1,89 @@
-const templateSelect = document.getElementById('template-select');
-const bgColorInput = document.getElementById('bg-color');
-const itemColorInput = document.getElementById('item-color');
-const radiusSlider = document.getElementById('radius-slider');
-const paddingSlider = document.getElementById('padding-slider');
+// 1. Element Selectors
+const inputs = {
+    template: document.getElementById('template-select'),
+    bg: document.getElementById('bg-color'),
+    item: document.getElementById('item-color'),
+    radius: document.getElementById('radius-slider'),
+    padding: document.getElementById('padding-slider')
+};
 
-const radiusVal = document.getElementById('radius-val');
-const paddingVal = document.getElementById('padding-val');
+const displays = {
+    radius: document.getElementById('radius-val'),
+    padding: document.getElementById('padding-val'),
+    preview: document.getElementById('preview-container'),
+    items: document.querySelectorAll('.preview-item'),
+    output: document.getElementById('css-code'),
+    copyBtn: document.getElementById('copy-btn')
+};
 
-const previewContainer = document.getElementById('preview-container');
-const previewItems = document.querySelectorAll('.preview-item');
-const cssOutput = document.getElementById('css-code');
+// 2. Main Logic Function: Generates and applies CSS based on inputs
+function generateCSS() {
+    // Capture user selections
+    const config = {
+        layout: inputs.template.value,
+        bgColor: inputs.bg.value,
+        itemColor: inputs.item.value,
+        radius: inputs.radius.value,
+        padding: inputs.padding.value
+    };
 
-function updateApp() {
-    const layout = templateSelect.value;
-    const radius = radiusSlider.value;
-    const padding = paddingSlider.value;
-    const bgColor = bgColorInput.value;
-    const itemColor = itemColorInput.value;
+    // Update UI Displays (Text labels)
+    displays.radius.innerText = config.radius;
+    displays.padding.innerText = config.padding;
 
-    // 1. Update Preview Container
-    previewContainer.className = '';
-    previewContainer.classList.add(`${layout}-template`);
-    previewContainer.style.backgroundColor = bgColor;
-    previewContainer.style.padding = `${padding}px`;
+    // Apply styles to Preview
+    displays.preview.className = `${config.layout}-template`;
+    displays.preview.style.backgroundColor = config.bgColor;
+    displays.preview.style.padding = `${config.padding}px`;
 
-    // 2. Update Items
-    previewItems.forEach(item => {
-        item.style.borderRadius = `${radius}px`;
-        item.style.backgroundColor = itemColor;
+    displays.items.forEach(item => {
+        item.style.backgroundColor = config.itemColor;
+        item.style.borderRadius = `${config.radius}px`;
     });
 
-    // 3. Update Text labels
-    radiusVal.innerText = radius;
-    paddingVal.innerText = padding;
-
-    // 4. Generate Dynamic CSS
-    const cssText = `/* Container Styles */
+    // Construct the CSS Rule String
+    const generatedCode = `/* CSS Generated for ${config.layout} */
 .container {
-  display: ${layout === 'grid' ? 'grid' : layout === 'columns' ? 'flex' : 'block'};
-  ${layout === 'grid' ? 'grid-template-columns: 1fr 1fr;' : ''}
+  display: ${config.layout === 'grid' ? 'grid' : config.layout === 'columns' ? 'flex' : 'block'};
+  ${config.layout === 'grid' ? 'grid-template-columns: 1fr 1fr;' : ''}
   gap: 15px;
-  padding: ${padding}px;
-  background-color: ${bgColor};
+  padding: ${config.padding}px;
+  background-color: ${config.bgColor};
 }
 
-/* Item Styles */
 .item {
-  background-color: ${itemColor};
-  border-radius: ${radius}px;
+  background-color: ${config.itemColor};
+  border-radius: ${config.radius}px;
+  color: white;
+  padding: 10px;
 }`;
 
-    cssOutput.value = cssText;
+    // Display the code in the text area
+    displays.output.value = generatedCode;
 }
 
-// Event Listeners for all inputs
-[templateSelect, bgColorInput, itemColorInput, radiusSlider, paddingSlider].forEach(input => {
-    input.addEventListener('input', updateApp);
+// 3. Logic Function: Copy to Clipboard
+function copyToClipboard() {
+    displays.output.select();
+    document.execCommand('copy');
+    
+    // Simple visual feedback
+    const originalText = displays.copyBtn.innerText;
+    displays.copyBtn.innerText = "✓ Copied!";
+    displays.copyBtn.style.background = "#1e90ff";
+    
+    setTimeout(() => {
+        displays.copyBtn.innerText = originalText;
+        displays.copyBtn.style.background = "#05c46b";
+    }, 2000);
+}
+
+// 4. Event Listeners
+Object.values(inputs).forEach(input => {
+    input.addEventListener('input', generateCSS);
 });
 
-// Run once to initialize
-updateApp();
+displays.copyBtn.addEventListener('click', copyToClipboard);
+
+// Initialize on page load
+generateCSS();

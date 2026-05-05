@@ -3,52 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Code Generator - Week 4</title>
+    <title>CSS Code Generator - Week 5</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="app-header">
-        <h1>CSS Customizer</h1>
-        <p>Fine-tune colors, spacing, and layouts</p>
+        <h1>CSS Logic Engine</h1>
+        <p>Generate, preview, and export custom CSS code</p>
     </header>
 
     <main class="main-container">
         <div class="app-grid">
             
-            <!-- Controls Panel -->
+            <!-- Input Panel -->
             <section class="controls-panel">
-                <h2>Customization Tools</h2>
+                <h2>1. Configure Inputs</h2>
                 
                 <div class="control-group">
-                    <label>Layout Template:</label>
+                    <label>Layout Style:</label>
                     <select id="template-select">
-                        <option value="card">Single Card</option>
-                        <option value="grid">Photo Grid (2x2)</option>
-                        <option value="columns">Two Columns</option>
+                        <option value="card">Standard Card</option>
+                        <option value="grid">2x2 Photo Grid</option>
+                        <option value="columns">Split Columns</option>
                     </select>
                 </div>
 
                 <div class="control-group">
-                    <label>Colors:</label>
-                    <div class="color-pickers">
-                        <span>Background: <input type="color" id="bg-color" value="#ecf0f1"></span>
-                        <span>Items: <input type="color" id="item-color" value="#3498db"></span>
+                    <label>Design Properties:</label>
+                    <div class="property-row">
+                        <span>Box Color: <input type="color" id="item-color" value="#3498db"></span>
+                        <span>Canvas Color: <input type="color" id="bg-color" value="#ffffff"></span>
                     </div>
                 </div>
 
                 <div class="control-group">
-                    <label>Spacing & Size:</label>
-                    <span>Border Radius: <span id="radius-val">0</span>px</span>
-                    <input type="range" id="radius-slider" min="0" max="100" value="0">
-                    
-                    <span>Internal Padding: <span id="padding-val">20</span>px</span>
-                    <input type="range" id="padding-slider" min="0" max="50" value="20">
+                    <label>Spacing & Curves:</label>
+                    <div class="slider-box">
+                        <span>Border Radius: <span id="radius-val">8</span>px</span>
+                        <input type="range" id="radius-slider" min="0" max="100" value="8">
+                    </div>
+                    <div class="slider-box">
+                        <span>Inner Padding: <span id="padding-val">20</span>px</span>
+                        <input type="range" id="padding-slider" min="0" max="60" value="20">
+                    </div>
                 </div>
             </section>
 
-            <!-- Preview Panel -->
+            <!-- Output Panel -->
             <section class="preview-panel">
-                <h2>Live Preview</h2>
+                <h2>2. CSS Output</h2>
                 <div id="preview-container" class="card-template">
                     <div class="preview-item">Item 1</div>
                     <div class="preview-item grid-only">Item 2</div>
@@ -56,8 +59,11 @@
                     <div class="preview-item grid-only">Item 4</div>
                 </div>
 
-                <div class="code-output">
-                    <label>Generated CSS:</label>
+                <div class="code-engine">
+                    <div class="engine-header">
+                        <label>Generated CSS Rules</label>
+                        <button id="copy-btn">Copy Code</button>
+                    </div>
                     <textarea id="css-code" readonly></textarea>
                 </div>
             </section>
@@ -66,7 +72,7 @@
     </main>
 
     <footer class="app-footer">
-        <p>&copy; 2026 CSS Generator App | Week 4 Customization Milestone</p>
+        <p>&copy; 2026 CSS Generator App | Week 5 Milestone: JavaScript Logic</p>
     </footer>
 
     <script src="script.js"></script>

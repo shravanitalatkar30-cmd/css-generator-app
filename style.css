@@ -1,51 +1,41 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Segoe UI', sans-serif; background-color: #f1f3f5; display: flex; flex-direction: column; min-height: 100vh; }
+body { font-family: 'Inter', system-ui, sans-serif; background-color: #f4f7f6; color: #2d3436; min-height: 100vh; display: flex; flex-direction: column; }
 
-.app-header { background: #2d3436; color: white; text-align: center; padding: 2rem; }
-.main-container { flex: 1; padding: 2rem; max-width: 1100px; margin: 0 auto; width: 100%; }
-.app-grid { display: flex; flex-wrap: wrap; gap: 2rem; background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 25px rgba(0,0,0,0.1); }
+.app-header { background: #1e272e; color: white; text-align: center; padding: 30px; }
+.main-container { flex: 1; padding: 40px 20px; max-width: 1200px; margin: 0 auto; width: 100%; }
+.app-grid { display: flex; flex-wrap: wrap; gap: 30px; background: white; padding: 30px; border-radius: 16px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); }
 
-.controls-panel, .preview-panel { flex: 1; min-width: 320px; }
-.control-group { margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #eee; }
-label { display: block; font-weight: bold; margin-bottom: 0.8rem; color: #2d3436; text-transform: uppercase; font-size: 0.8rem; }
+.controls-panel, .preview-panel { flex: 1; min-width: 350px; }
+.control-group { margin-bottom: 25px; background: #f8fafb; padding: 15px; border-radius: 10px; }
+label { font-weight: 700; font-size: 0.85rem; color: #4b6584; display: block; margin-bottom: 15px; }
 
-.color-pickers { display: flex; gap: 15px; font-size: 0.9rem; }
-input[type="color"] { border: none; width: 30px; height: 30px; cursor: pointer; vertical-align: middle; }
-input[type="range"] { width: 100%; margin: 10px 0; }
+.property-row { display: flex; gap: 20px; font-size: 0.9rem; }
+.slider-box { margin-bottom: 15px; font-size: 0.9rem; }
+input[type="range"] { width: 100%; margin-top: 8px; }
 
-/* Layout Preview Logic */
-#preview-container {
-    min-height: 350px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid #dfe6e9;
-    transition: 0.3s;
-}
+/* Preview & Engine */
+#preview-container { min-height: 300px; border: 2px solid #edeff0; border-radius: 12px; margin-bottom: 20px; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.preview-item { color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; }
 
-.preview-item {
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    transition: 0.2s;
-}
-
-/* Templates */
+/* Template Layouts */
 .card-template { display: block !important; }
-.card-template .preview-item { width: 100%; height: 280px; }
+.card-template .preview-item { width: 100%; height: 250px; }
 .card-template .grid-only { display: none; }
 
 .grid-template { display: grid !important; grid-template-columns: 1fr 1fr; gap: 15px; }
-.grid-template .preview-item { height: 140px; }
+.grid-template .preview-item { height: 120px; }
 .grid-template .grid-only { display: flex; }
 
 .column-template { display: flex !important; gap: 15px; }
-.column-template .preview-item { flex: 1; height: 280px; }
+.column-template .preview-item { flex: 1; height: 250px; }
 .column-template .grid-only { display: none; }
 .column-template .preview-item:nth-child(2) { display: flex; }
 
-/* Footer & Output */
-.code-output textarea { width: 100%; height: 150px; margin-top: 10px; padding: 15px; font-family: 'Consolas', monospace; background: #2d3436; color: #00cec9; border-radius: 8px; border: none; }
-.app-footer { text-align: center; padding: 1.5rem; background: #2d3436; color: #636e72; }
+/* Code Section */
+.code-engine { position: relative; }
+.engine-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+#copy-btn { background: #05c46b; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.75rem; font-weight: bold; }
+#copy-btn:active { transform: scale(0.95); }
+#css-code { width: 100%; height: 160px; background: #2f3542; color: #7bed9f; padding: 15px; border-radius: 8px; font-family: 'Fira Code', monospace; font-size: 13px; line-height: 1.5; border: none; resize: none; }
+
+.app-footer { background: #1e272e; color: #808e9b; text-align: center; padding: 20px; font-size: 0.85rem; }
