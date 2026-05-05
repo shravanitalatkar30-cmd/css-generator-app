@@ -3,45 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Code Generator</title>
+    <title>CSS Code Generator - Week 3</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header Component -->
     <header class="app-header">
-        <h1>CSS Code Generator</h1>
-        <p>Design beautiful layouts effortlessly</p>
+        <h1>CSS Layout Generator</h1>
+        <p>Select a template and customize the design</p>
     </header>
 
-    <!-- Main Content Area -->
     <main class="main-container">
         <div class="app-grid">
             
-            <!-- Left Panel: Controls -->
+            <!-- Controls Panel -->
             <section class="controls-panel">
-                <h2>Controls</h2>
+                <h2>Customization</h2>
+                
+                <div class="control-group">
+                    <label for="template-select">Layout Template:</label>
+                    <select id="template-select">
+                        <option value="card">Single Card</option>
+                        <option value="grid">Photo Grid (2x2)</option>
+                        <option value="columns">Two Columns</option>
+                    </select>
+                </div>
+
                 <div class="control-group">
                     <label for="radius-slider">Border Radius: <span id="radius-val">0</span>px</label>
                     <input type="range" id="radius-slider" min="0" max="100" value="0">
                 </div>
             </section>
 
-            <!-- Right Panel: Preview -->
+            <!-- Preview Panel -->
             <section class="preview-panel">
-                <h2>Preview</h2>
-                <div id="preview-box"></div>
+                <h2>Live Preview</h2>
+                <div id="preview-container" class="card-template">
+                    <!-- The items inside change based on the template -->
+                    <div class="preview-item">Item 1</div>
+                    <div class="preview-item grid-only">Item 2</div>
+                    <div class="preview-item grid-only">Item 3</div>
+                    <div class="preview-item grid-only">Item 4</div>
+                </div>
+
                 <div class="code-output">
-                    <label>CSS Output:</label>
-                    <textarea id="css-code" readonly>border-radius: 0px;</textarea>
+                    <label>Generated CSS:</label>
+                    <textarea id="css-code" readonly></textarea>
                 </div>
             </section>
 
         </div>
     </main>
 
-    <!-- Footer Component -->
     <footer class="app-footer">
-        <p>&copy; 2026 CSS Generator App | Built for DIY Internship</p>
+        <p>&copy; 2026 CSS Generator App | Week 3 Milestone</p>
     </footer>
 
     <script src="script.js"></script>
