@@ -60,3 +60,15 @@
 * Clipboard API integration.
 * Functional programming in Vanilla JS.
 
+# Week 6: Clipboard Integration & Export 📋
+
+### **Milestones Achieved**
+* **Modern Clipboard API**: Integrated the `navigator.clipboard` functionality for secure and efficient code copying.
+* **UI Feedback**: Added a dynamic button state that provides the user with "Copied!" feedback upon success.
+* **Export Optimization**: Refined the CSS output formatting to ensure it is immediately ready for use in external production environments.
+
+### **Technical Focus**
+* Asynchronous JavaScript (async/await).
+* Navigator API and Permissions.
+* UI/UX state management for buttons.
+

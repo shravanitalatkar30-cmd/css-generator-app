@@ -1,41 +1,44 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Inter', system-ui, sans-serif; background-color: #f4f7f6; color: #2d3436; min-height: 100vh; display: flex; flex-direction: column; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background-color: #f0f2f5; color: #333; display: flex; flex-direction: column; min-height: 100vh; }
 
-.app-header { background: #1e272e; color: white; text-align: center; padding: 30px; }
-.main-container { flex: 1; padding: 40px 20px; max-width: 1200px; margin: 0 auto; width: 100%; }
-.app-grid { display: flex; flex-wrap: wrap; gap: 30px; background: white; padding: 30px; border-radius: 16px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); }
+.app-header { background: #1a1a1a; color: #fff; text-align: center; padding: 40px 20px; }
+.main-container { flex: 1; padding: 40px 20px; max-width: 1100px; margin: 0 auto; width: 100%; }
+.app-grid { display: flex; flex-wrap: wrap; gap: 30px; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.05); }
 
-.controls-panel, .preview-panel { flex: 1; min-width: 350px; }
-.control-group { margin-bottom: 25px; background: #f8fafb; padding: 15px; border-radius: 10px; }
-label { font-weight: 700; font-size: 0.85rem; color: #4b6584; display: block; margin-bottom: 15px; }
+.controls-panel, .preview-panel { flex: 1; min-width: 320px; }
+.control-group { margin-bottom: 20px; padding: 15px; background: #f9f9f9; border-radius: 8px; }
+label { font-weight: bold; font-size: 0.9rem; display: block; margin-bottom: 12px; color: #555; }
 
-.property-row { display: flex; gap: 20px; font-size: 0.9rem; }
-.slider-box { margin-bottom: 15px; font-size: 0.9rem; }
-input[type="range"] { width: 100%; margin-top: 8px; }
+.input-row { display: flex; gap: 15px; }
+input[type="range"] { width: 100%; margin-top: 10px; }
 
-/* Preview & Engine */
-#preview-container { min-height: 300px; border: 2px solid #edeff0; border-radius: 12px; margin-bottom: 20px; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+/* Layout Visuals */
+#preview-container { min-height: 300px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 20px; transition: 0.3s ease; }
 .preview-item { color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; }
 
-/* Template Layouts */
+/* Templates */
 .card-template { display: block !important; }
-.card-template .preview-item { width: 100%; height: 250px; }
+.card-template .preview-item { width: 100%; height: 260px; }
 .card-template .grid-only { display: none; }
 
 .grid-template { display: grid !important; grid-template-columns: 1fr 1fr; gap: 15px; }
-.grid-template .preview-item { height: 120px; }
+.grid-template .preview-item { height: 130px; }
 .grid-template .grid-only { display: flex; }
 
 .column-template { display: flex !important; gap: 15px; }
-.column-template .preview-item { flex: 1; height: 250px; }
+.column-template .preview-item { flex: 1; height: 260px; }
 .column-template .grid-only { display: none; }
 .column-template .preview-item:nth-child(2) { display: flex; }
 
-/* Code Section */
-.code-engine { position: relative; }
-.engine-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-#copy-btn { background: #05c46b; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.75rem; font-weight: bold; }
-#copy-btn:active { transform: scale(0.95); }
-#css-code { width: 100%; height: 160px; background: #2f3542; color: #7bed9f; padding: 15px; border-radius: 8px; font-family: 'Fira Code', monospace; font-size: 13px; line-height: 1.5; border: none; resize: none; }
+/* Clipboard UI */
+.export-area { background: #222; border-radius: 8px; padding: 15px; }
+.export-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.export-header label { color: #aaa; margin: 0; font-size: 0.75rem; }
 
-.app-footer { background: #1e272e; color: #808e9b; text-align: center; padding: 20px; font-size: 0.85rem; }
+#copy-btn { background: #4a90e2; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; transition: background 0.2s; }
+#copy-btn:hover { background: #357abd; }
+#copy-btn.success { background: #27ae60; }
+
+#css-code { width: 100%; height: 140px; background: transparent; color: #50fa7b; border: none; resize: none; font-family: 'Consolas', monospace; font-size: 0.85rem; outline: none; }
+
+.app-footer { background: #1a1a1a; color: #777; text-align: center; padding: 20px; font-size: 0.8rem; }
