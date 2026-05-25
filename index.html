@@ -3,66 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Generator - Week 6</title>
+    <title>CSS Generator Studio - Usability Build</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="app-header">
-        <h1>CSS Generator Pro</h1>
-        <p>Design, Preview, and Export Code</p>
+        <h1>CSS Generator Studio</h1>
+        <p>Design Components, Export Clean Code, and Submit Feedback</p>
     </header>
 
     <main class="main-container">
         <div class="app-grid">
             
-            <!-- Settings Section -->
-            <section class="controls-panel">
-                <h2>Layout Settings</h2>
-                
-                <div class="control-group">
-                    <label for="template-select">Choose Layout:</label>
-                    <select id="template-select">
-                        <option value="card">Standard Card</option>
-                        <option value="grid">2x2 Photo Grid</option>
-                        <option value="columns">Two-Column Split</option>
-                    </select>
-                </div>
-
-                <div class="control-group">
-                    <label>Colors & Style:</label>
-                    <div class="input-row">
-                        <span>Box: <input type="color" id="item-color" value="#3498db"></span>
-                        <span>Canvas: <input type="color" id="bg-color" value="#ffffff"></span>
+            <div class="left-column">
+                <section class="controls-panel">
+                    <h2>Workspace Layout Configuration</h2>
+                    
+                    <div class="control-group">
+                        <label for="template-select">Target Structure Template:</label>
+                        <select id="template-select">
+                            <option value="card">Standard Content Card</option>
+                            <option value="grid">2x2 Image Grid Matrix</option>
+                            <option value="columns">Two-Column Asymmetric Split</option>
+                        </select>
                     </div>
-                </div>
 
-                <div class="control-group">
-                    <label>Dimensions:</label>
-                    <div class="slider-box">
-                        <span>Border Radius: <span id="radius-val">10</span>px</span>
-                        <input type="range" id="radius-slider" min="0" max="100" value="10">
+                    <div class="control-group">
+                        <label>Active Theme Variables:</label>
+                        <div class="input-row">
+                            <span>Element: <input type="color" id="item-color" value="#3498db"></span>
+                            <span>Canvas: <input type="color" id="bg-color" value="#ffffff"></span>
+                        </div>
                     </div>
-                    <div class="slider-box">
-                        <span>Container Padding: <span id="padding-val">25</span>px</span>
-                        <input type="range" id="padding-slider" min="0" max="60" value="25">
-                    </div>
-                </div>
-            </section>
 
-            <!-- Display & Export Section -->
+                    <div class="control-group">
+                        <label>Box Model Parameters:</label>
+                        <div class="slider-box">
+                            <span>Border Radius: <span id="radius-val">10</span>px</span>
+                            <input type="range" id="radius-slider" min="0" max="100" value="10">
+                        </div>
+                        <div class="slider-box">
+                            <span>Internal Padding: <span id="padding-val">25</span>px</span>
+                            <input type="range" id="padding-slider" min="0" max="60" value="25">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="feedback-panel">
+                    <h2>Submit App Usability Metrics</h2>
+                    <form id="feedback-form">
+                        <div class="form-group">
+                            <label for="user-name">Evaluator Name:</label>
+                            <input type="text" id="user-name" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-rating">UX Architecture Rating:</label>
+                            <select id="user-rating" required>
+                                <option value="">Select a score...</option>
+                                <option value="5">5 - Exceptional & Fully Intuitive</option>
+                                <option value="4">4 - Good Structural Flow</option>
+                                <option value="3">3 - Operational / Average</option>
+                                <option value="2">2 - Needs Layout Redesign</option>
+                                <option value="1">1 - Highly Counter-Intuitive</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-comments">Usability Insights & Issues:</label>
+                            <textarea id="user-comments" placeholder="Describe layout hurdles or feature bugs encountered..." required></textarea>
+                        </div>
+                        <button type="submit" id="submit-feedback-btn">Transmit Feedback Metrics</button>
+                    </form>
+                    <div id="feedback-message" class="hidden"></div>
+                </section>
+            </div>
+
             <section class="preview-panel">
-                <h2>Visual Preview</h2>
+                <h2>Visual Layout Engine Sandbox</h2>
                 <div id="preview-container" class="card-template">
-                    <div class="preview-item">Element 1</div>
-                    <div class="preview-item grid-only">Element 2</div>
-                    <div class="preview-item grid-only">Element 3</div>
-                    <div class="preview-item grid-only">Element 4</div>
+                    <div class="preview-item">Component Core 1</div>
+                    <div class="preview-item grid-only">Component Core 2</div>
+                    <div class="preview-item grid-only">Component Core 3</div>
+                    <div class="preview-item grid-only">Component Core 4</div>
                 </div>
 
                 <div class="export-area">
                     <div class="export-header">
-                        <label>Generated CSS</label>
-                        <button id="copy-btn">Copy to Clipboard</button>
+                        <label>Generated Compilation CSS Snippet</label>
+                        <button id="copy-btn">Copy Style Snippet</button>
                     </div>
                     <textarea id="css-code" readonly></textarea>
                 </div>
@@ -72,7 +99,7 @@
     </main>
 
     <footer class="app-footer">
-        <p>&copy; 2026 CSS Generator App | Week 6: Clipboard Integration</p>
+        <p>&copy; 2026 Code Studio Ecosystem | Week 7: Quality Assurance Validation Milestone</p>
     </footer>
 
     <script src="script.js"></script>
